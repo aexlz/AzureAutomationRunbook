@@ -8,7 +8,7 @@ Auto-assigning a device to a group with no user-interaction is hard, when you wa
 This script allows us to do the following:
 User A purchases a new device.
 User A signs in on this device to portal.microsoft.com once (Device-Object will be propagated in Azure).
-Admin B calls the WebhookScript with the UPN of UserA and every attached Device will be added to a certain device-group.
+Admin B calls CallWebhook.ps1 with the UPN of UserA and every attached Device will be added to a certain device-group by the RunbookExample.ps1
 If you just want to have specific devices e.g. Windows you have to filter them in the Run-Book-Script.
 
 Make sure to create the AzureAutomationAccount, the ManagedIdentity and the Webhook in advance.
@@ -18,6 +18,8 @@ https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure
 https://docs.microsoft.com/en-us/azure/automation/
 
 Enter the according values in the scripts with your own parameter (AutomationAccount, ManagedIdentity, ResourceGroupName, Device-Group-ObjectID)
+
+Run the Assign
 
 The Webhook must be called with the UPN of the certain user.
 
