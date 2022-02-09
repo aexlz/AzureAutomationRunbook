@@ -143,7 +143,7 @@ try{
 	foreach ($device in $azureADDevices){
 		if ($device.DeviceOSType -eq "Windows")){
 			Add-AzureADGroupMember -ObjectId $GroupObjectID -RefObjectId $device.ObjectId > $null
-			Write-Output "Added device '$($device.DisplayName)' to DeviceGroup assigned DeviceGroup"
+			Write-Output "Added device '$($device.DisplayName)' to assigned DeviceGroup"
 		}
 	}
 }catch{
