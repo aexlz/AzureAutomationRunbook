@@ -19,7 +19,7 @@ https://docs.microsoft.com/en-us/azure/automation/
 
 Enter the according values in the scripts with your own parameter (AutomationAccount, ManagedIdentity, ResourceGroupName, Device-Group-ObjectID)
 
-Run the Assign
+Run the AssignGroupMembershiptoManagedIdentity.ps1 with the right Role in advance.
 
 The Webhook must be called with the UPN of the certain user.
 
