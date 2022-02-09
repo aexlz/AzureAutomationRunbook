@@ -4,6 +4,7 @@ param
     [object] $WebhookData
 )
 
+#Read request-body
 if ($WebhookData.RequestBody) { 
     $upns = (ConvertFrom-Json -InputObject $WebhookData.RequestBody)
 
@@ -18,6 +19,7 @@ else {
 	exit
 }
 
+#AutomationAccount-Variables needed.
 $automationAccount = "<ENTER automationAccountName here>"
 $userAssignedManagedIdentity = "<ENTER Managed Identity here>"
 $resourceGroup = "<ENTER ResourceGroup Name here>"
@@ -138,7 +140,7 @@ try{
 	exit
 }
 
-
+#Add all devices of the user, which meet criteria, to device-group.
 try{
 	foreach ($device in $azureADDevices){
 		if ($device.DeviceOSType -eq "Windows")){
