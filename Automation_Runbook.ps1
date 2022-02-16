@@ -143,7 +143,7 @@ Function AddNewMemberToTargetGroup {
 Function Main {
 	param(
          [Parameter(Mandatory=$true, Position=0)][Object[]]$userOfGroup,
-		 [Parameter(Mandatory=$true, Position=1)][Object[]]$devicesOfTargetGroup,
+		 [Parameter(Mandatory=$true, Position=1)][AllowNull()][Object[]]$devicesOfTargetGroup,
 		 [Parameter(Mandatory=$true, Position=2)][String]$businessUnitDeviceGroupID
     )
 	try{
@@ -163,6 +163,8 @@ Function Main {
 						#If it not add to targetgroup						
 						if($isAlreadyMember -ne $true){
 							AddNewMemberToTargetGroup $singleOwnedDevice $businessUnits[$buinessUnitKey]
+						}else{
+							Write-Output "Device $($singleOwnedDevice.id) is already member of group $($businessUnits[$buinessUnitKey])"
 						}
 					}
 				}
@@ -179,6 +181,9 @@ Function Main {
 try{
 	#Take the ObjectIds from the HashTable
 	foreach ($buinessUnitKey in $businessUnits.Keys){
+		Write-Output "Fetched UserGroup-ObjectID $($buinessUnitKey)"
+		Write-Output "Fetched DeviceGroup-ObjectID $($businessUnits[$buinessUnitKey])"
+
 		#Key = UserGroupId of BusinessUnit
 		#Fetch all group-members
 		$userOfGroup = Get-MgGroupMember -GroupId $buinessUnitKey
